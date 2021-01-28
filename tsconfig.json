@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "lib": ["ESNext"],
+        "outDir": "out/js/",
+        "declaration": true,
+        "declarationDir": "out/declarations/"
+    },
+    "compileOnSave": false,
+    "include": [
+        "declarations/*.d.ts",
+        "source/*.ts"
+    ]
+}

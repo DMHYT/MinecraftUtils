@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "typescript",
+			"tsconfig": "tsconfig.json",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build",
+			"label": "Build libraries"
+		},
+		{
+			"label": "Move libs and declarations",
+			"type": "shell",
+			"command": "main.bat",
+			"group": "build",
+			"problemMatcher": []
+		}
+	]
+}
