@@ -11,11 +11,10 @@
 			"label": "Build libraries"
 		},
 		{
-			"label": "Move libs and declarations",
 			"type": "shell",
-			"command": "main.bat",
-			"group": "build",
-			"problemMatcher": []
+			"label": "Download declarations",
+			"command": "docs.bat",
+			"group": "build"
 		}
 	]
 }
