@@ -4,7 +4,7 @@ declare namespace MinecraftUtils {
         BLOCK = 1,
         ENTITY = 2
     }
-    export class RayTraceResult extends java.lang.Object {
+    export class RayTraceResult {
         private blockPos;
         typeOfHit: RayTraceResultType;
         sideHit: EnumFacing;
@@ -19,7 +19,7 @@ declare namespace MinecraftUtils {
         toString(): string;
         static Type: typeof RayTraceResultType;
     }
-    export class AxisAlignedBB extends java.lang.Object {
+    export class AxisAlignedBB {
         readonly minX: number;
         readonly minY: number;
         readonly minZ: number;
@@ -31,7 +31,7 @@ declare namespace MinecraftUtils {
         constructor(pos1: BlockPos, pos2: BlockPos);
         constructor(min: Vec3d, max: Vec3d);
         setMaxY(y2: number): AxisAlignedBB;
-        equals(obj: java.lang.Object): boolean;
+        equals(obj: any): boolean;
         hashCode(): number;
         addCoord(x: number, y: number, z: number): AxisAlignedBB;
         expand(x: number, y: number, z: number): AxisAlignedBB;
@@ -60,7 +60,7 @@ declare namespace MinecraftUtils {
         hasNaN(): boolean;
         getCenter(): Vec3d;
     }
-    export class Vec2f extends java.lang.Object {
+    export class Vec2f {
         static readonly ZERO: Vec2f;
         static readonly ONE: Vec2f;
         static readonly UNIT_X: Vec2f;
@@ -73,13 +73,13 @@ declare namespace MinecraftUtils {
         readonly y: number;
         constructor(xIn: number, yIn: number);
     }
-    export class Vec3i extends java.lang.Object implements java.lang.Comparable<Vec3i> {
+    export class Vec3i {
         static readonly NULL_VECTOR: Vec3i;
         protected readonly x: number;
         protected readonly y: number;
         protected readonly z: number;
         constructor(xIn: number, yIn: number, zIn: number);
-        equals(obj: java.lang.Object): boolean;
+        equals(obj: any): boolean;
         hashCode(): number;
         compareTo(toCompare: Vec3i): number;
         getX(): number;
@@ -92,7 +92,7 @@ declare namespace MinecraftUtils {
         distanceSqToCenter(xIn: number, yIn: number, zIn: number): number;
         toString(): string;
     }
-    export class Vec3d extends java.lang.Object {
+    export class Vec3d {
         static readonly ZERO: Vec3d;
         readonly xCoord: number;
         readonly yCoord: number;
@@ -117,7 +117,7 @@ declare namespace MinecraftUtils {
         getIntermediateWithXValue(vec: Vec3d, x: number): Nullable<Vec3d>;
         getIntermediateWithYValue(vec: Vec3d, y: number): Nullable<Vec3d>;
         getIntermediateWithZValue(vec: Vec3d, z: number): Nullable<Vec3d>;
-        equals(obj: java.lang.Object): boolean;
+        equals(obj: any): boolean;
         hashCode(): number;
         toString(): string;
         rotatePitch(pitch: number): Vec3d;

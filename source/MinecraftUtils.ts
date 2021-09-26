@@ -10,7 +10,7 @@ namespace MinecraftUtils {
     enum RayTraceResultType {
         MISS, BLOCK, ENTITY
     };
-    export class RayTraceResult extends java.lang.Object {
+    export class RayTraceResult {
 
         private blockPos: BlockPos;
         public typeOfHit: RayTraceResultType;
@@ -25,7 +25,6 @@ namespace MinecraftUtils {
         constructor(entityHitIn: number, hitVecIn: Vec3d);
 
         constructor(par1: Vec3d | number | RayTraceResultType, par2?: EnumFacing | Vec3d, par3?: BlockPos | EnumFacing, par4?: BlockPos){
-            super();
             if(typeof par1 === "number" && par2 instanceof Vec3d){
                 this.typeOfHit = RayTraceResult.Type.ENTITY;
                 this.entityHit = par1;
@@ -57,7 +56,7 @@ namespace MinecraftUtils {
 
     }
 
-    export class AxisAlignedBB extends java.lang.Object {
+    export class AxisAlignedBB {
 
         public readonly minX: number;
         public readonly minY: number;
@@ -72,7 +71,6 @@ namespace MinecraftUtils {
         constructor(min: Vec3d, max: Vec3d);
 
         constructor(x1: number | BlockPos | Vec3d, y1?: number | BlockPos | Vec3d, z1?: number, x2?: number, y2?: number, z2?: number){
-            super();
             if(typeof x1 === "number" && typeof y1 === "number" && typeof z1 === "number" &&
                typeof x2 === "number" && typeof y2 === "number" && typeof z2 === "number"){
                 this.minX = Math.min(x1, x2), this.minY = Math.min(y1, y2), this.minZ = Math.min(z1, z2),
@@ -92,7 +90,7 @@ namespace MinecraftUtils {
             return new AxisAlignedBB(this.minX, this.minY, this.minZ, this.maxX, y2, this.maxZ);
         }
 
-        public equals(obj: java.lang.Object): boolean {
+        public equals(obj: any): boolean {
             if(this == obj) return true;
             else if(!(obj instanceof AxisAlignedBB)) return false;
             else {
@@ -364,7 +362,7 @@ namespace MinecraftUtils {
     }
 
     
-    export class Vec2f extends java.lang.Object {
+    export class Vec2f {
 
         public static readonly ZERO: Vec2f = new Vec2f(0, 0);
         public static readonly ONE: Vec2f = new Vec2f(1, 1);
@@ -379,14 +377,13 @@ namespace MinecraftUtils {
         public readonly y: number;
     
         constructor(xIn: number, yIn: number){
-            super();
             this.x = xIn;
             this.y = yIn;
         }
     
     }
     
-    export class Vec3i extends java.lang.Object implements java.lang.Comparable<Vec3i> {
+    export class Vec3i {
 
         public static readonly NULL_VECTOR: Vec3i = new Vec3i(0, 0, 0);
     
@@ -395,11 +392,10 @@ namespace MinecraftUtils {
         protected readonly z: number;
     
         constructor(xIn: number, yIn: number, zIn: number){
-            super();
             this.x = Math.floor(xIn), this.y = Math.floor(yIn), this.z = Math.floor(zIn);
         }
     
-        public equals(obj: java.lang.Object): boolean {
+        public equals(obj: any): boolean {
             if(this == obj) return true;
             else if(!(obj instanceof Vec3i)) return false;
             else {
@@ -456,7 +452,7 @@ namespace MinecraftUtils {
     
     }
 
-    export class Vec3d extends java.lang.Object {
+    export class Vec3d {
 
         public static readonly ZERO: Vec3d = new Vec3d(0, 0, 0);
     
@@ -468,7 +464,6 @@ namespace MinecraftUtils {
         constructor(vec: Vec3i);
     
         constructor(x: number | Vec3i, y?: number, z?: number){
-            super();
             if(typeof x === "number"){
                 if(x == -0) x = 0;
                 if(y == -0) y = 0;
@@ -581,7 +576,7 @@ namespace MinecraftUtils {
             }
         }
     
-        public equals(obj: java.lang.Object): boolean {
+        public equals(obj: any): boolean {
             if(this == obj) return true;
             else if(!(obj instanceof Vec3d)) return false;
             else {

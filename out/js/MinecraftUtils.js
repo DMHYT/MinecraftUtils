@@ -26,20 +26,18 @@ var MinecraftUtils;
         RayTraceResultType[RayTraceResultType["ENTITY"] = 2] = "ENTITY";
     })(RayTraceResultType || (RayTraceResultType = {}));
     ;
-    var RayTraceResult = /** @class */ (function (_super) {
-        __extends(RayTraceResult, _super);
+    var RayTraceResult = /** @class */ (function () {
         function RayTraceResult(par1, par2, par3, par4) {
-            var _this = _super.call(this) || this;
             if (typeof par1 === "number" && par2 instanceof Vec3d) {
-                _this.typeOfHit = RayTraceResult.Type.ENTITY;
-                _this.entityHit = par1;
-                _this.hitVec = par2;
+                this.typeOfHit = RayTraceResult.Type.ENTITY;
+                this.entityHit = par1;
+                this.hitVec = par2;
             }
             else if (par2 instanceof Vec3d && par3 instanceof EnumFacing && par4 instanceof BlockPos) {
-                _this.typeOfHit = par1;
-                _this.blockPos = par4;
-                _this.sideHit = par3;
-                _this.hitVec = new Vec3d(par2.xCoord, par2.yCoord, par2.zCoord);
+                this.typeOfHit = par1;
+                this.blockPos = par4;
+                this.sideHit = par3;
+                this.hitVec = new Vec3d(par2.xCoord, par2.yCoord, par2.zCoord);
             }
             else if (typeof par1 === "number" && !(par2 instanceof Vec3d)) {
                 var pos = Entity.getPosition(par1);
@@ -52,7 +50,6 @@ var MinecraftUtils;
                 else
                     return new RayTraceResult(RayTraceResult.Type.BLOCK, par1, par2, BlockPos.ORIGIN);
             }
-            return _this;
         }
         RayTraceResult.prototype.getBlockPos = function () {
             return this.blockPos;
@@ -62,16 +59,14 @@ var MinecraftUtils;
         };
         RayTraceResult.Type = RayTraceResultType;
         return RayTraceResult;
-    }(java.lang.Object));
+    }());
     MinecraftUtils.RayTraceResult = RayTraceResult;
-    var AxisAlignedBB = /** @class */ (function (_super) {
-        __extends(AxisAlignedBB, _super);
+    var AxisAlignedBB = /** @class */ (function () {
         function AxisAlignedBB(x1, y1, z1, x2, y2, z2) {
-            var _this = _super.call(this) || this;
             if (typeof x1 === "number" && typeof y1 === "number" && typeof z1 === "number" &&
                 typeof x2 === "number" && typeof y2 === "number" && typeof z2 === "number") {
-                _this.minX = Math.min(x1, x2), _this.minY = Math.min(y1, y2), _this.minZ = Math.min(z1, z2),
-                    _this.maxX = Math.max(x1, x2), _this.maxY = Math.max(y1, y2), _this.maxZ = Math.max(z1, z2);
+                this.minX = Math.min(x1, x2), this.minY = Math.min(y1, y2), this.minZ = Math.min(z1, z2),
+                    this.maxX = Math.max(x1, x2), this.maxY = Math.max(y1, y2), this.maxZ = Math.max(z1, z2);
             }
             else if (typeof x1 === "object" && typeof y1 === "object") {
                 if (x1 instanceof BlockPos && y1 instanceof BlockPos) {
@@ -84,7 +79,6 @@ var MinecraftUtils;
             else if (typeof x1 === "object" && typeof y1 !== "object" && x1 instanceof BlockPos) {
                 return new AxisAlignedBB(x1.getX(), x1.getY(), x1.getZ(), x1.getX() + 1, x1.getY() + 1, x1.getZ() + 1);
             }
-            return _this;
         }
         AxisAlignedBB.prototype.setMaxY = function (y2) {
             return new AxisAlignedBB(this.minX, this.minY, this.minZ, this.maxX, y2, this.maxZ);
@@ -289,7 +283,7 @@ var MinecraftUtils;
             return new Vec3d(this.minX + (this.maxX - this.minX) * 0.5, this.minY + (this.maxY - this.minY) * 0.5, this.minZ + (this.maxZ - this.minZ) * 0.5);
         };
         return AxisAlignedBB;
-    }(java.lang.Object));
+    }());
     MinecraftUtils.AxisAlignedBB = AxisAlignedBB;
     var UnmodifiableIterator = /** @class */ (function (_super) {
         __extends(UnmodifiableIterator, _super);
@@ -356,13 +350,10 @@ var MinecraftUtils;
         };
         return AbstractIterator;
     }(UnmodifiableIterator));
-    var Vec2f = /** @class */ (function (_super) {
-        __extends(Vec2f, _super);
+    var Vec2f = /** @class */ (function () {
         function Vec2f(xIn, yIn) {
-            var _this = _super.call(this) || this;
-            _this.x = xIn;
-            _this.y = yIn;
-            return _this;
+            this.x = xIn;
+            this.y = yIn;
         }
         Vec2f.ZERO = new Vec2f(0, 0);
         Vec2f.ONE = new Vec2f(1, 1);
@@ -373,14 +364,11 @@ var MinecraftUtils;
         Vec2f.MAX = new Vec2f(java.lang.Float.MAX_VALUE, java.lang.Float.MAX_VALUE);
         Vec2f.MIN = new Vec2f(java.lang.Float.MIN_VALUE, java.lang.Float.MIN_VALUE);
         return Vec2f;
-    }(java.lang.Object));
+    }());
     MinecraftUtils.Vec2f = Vec2f;
-    var Vec3i = /** @class */ (function (_super) {
-        __extends(Vec3i, _super);
+    var Vec3i = /** @class */ (function () {
         function Vec3i(xIn, yIn, zIn) {
-            var _this = _super.call(this) || this;
-            _this.x = Math.floor(xIn), _this.y = Math.floor(yIn), _this.z = Math.floor(zIn);
-            return _this;
+            this.x = Math.floor(xIn), this.y = Math.floor(yIn), this.z = Math.floor(zIn);
         }
         Vec3i.prototype.equals = function (obj) {
             if (this == obj)
@@ -431,12 +419,10 @@ var MinecraftUtils;
         };
         Vec3i.NULL_VECTOR = new Vec3i(0, 0, 0);
         return Vec3i;
-    }(java.lang.Object));
+    }());
     MinecraftUtils.Vec3i = Vec3i;
-    var Vec3d = /** @class */ (function (_super) {
-        __extends(Vec3d, _super);
+    var Vec3d = /** @class */ (function () {
         function Vec3d(x, y, z) {
-            var _this = _super.call(this) || this;
             if (typeof x === "number") {
                 if (x == -0)
                     x = 0;
@@ -444,14 +430,13 @@ var MinecraftUtils;
                     y = 0;
                 if (z == -0)
                     z = 0;
-                _this.xCoord = x;
-                _this.yCoord = y;
-                _this.zCoord = z;
+                this.xCoord = x;
+                this.yCoord = y;
+                this.zCoord = z;
             }
             else if (typeof x === "object" && x instanceof Vec3i) {
                 return new Vec3d(x.getX(), x.getY(), x.getZ());
             }
-            return _this;
         }
         Vec3d.prototype.subtractReverse = function (vec) {
             return new Vec3d(vec.xCoord - this.xCoord, vec.yCoord - this.yCoord, vec.zCoord - this.zCoord);
@@ -587,7 +572,7 @@ var MinecraftUtils;
         };
         Vec3d.ZERO = new Vec3d(0, 0, 0);
         return Vec3d;
-    }(java.lang.Object));
+    }());
     MinecraftUtils.Vec3d = Vec3d;
     var BlockPos = /** @class */ (function (_super) {
         __extends(BlockPos, _super);
